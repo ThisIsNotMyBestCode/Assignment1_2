@@ -7,23 +7,31 @@ public class ContestDriver {
 
         ArrayList<Contestant> contestants = new ArrayList<>();
 
-        int numberOfContestants = 45000;
+        int numberOfContestants = 3;
         for (int i = 0; i < numberOfContestants; i++) {
             Contestant newContestant = new Contestant("Contestant#" + i , i);
             contestants.add(newContestant);
         }
 
         playAGame(contestants);
+
         System.out.println("Finished");
 
         long endTime = System.currentTimeMillis();
         long elapsedTime = endTime - startTime;
-
+        System.out.println("#############################################");
         System.out.println("Elapsed time: " + elapsedTime + " ms");
+        System.out.println("# of Contestants: " + numberOfContestants);
+
+        System.out.println("############################################# \n");
+
         // Print current state of contestants
+        System.out.println("Printing each contestant record: \n");
         for (var contestant : contestants) {
             System.out.println(contestant.getRecord());
         }
+
+
     }
 
     public static void playAGame(ArrayList<Contestant> contestants) {
