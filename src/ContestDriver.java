@@ -30,8 +30,6 @@ public class ContestDriver {
         for (var contestant : contestants) {
             System.out.println(contestant.getRecord());
         }
-
-
     }
 
     public static void playAGame(ArrayList<Contestant> contestants) {
