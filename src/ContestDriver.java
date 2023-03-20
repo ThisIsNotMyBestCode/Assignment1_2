@@ -5,7 +5,7 @@ public class ContestDriver {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        ArrayList<Contestant> contestants = new ArrayList<Contestant>();
+        ArrayList<Contestant> contestants = new ArrayList<>();
 
         int numberOfContestants = 45000;
         for (int i = 0; i < numberOfContestants; i++) {
@@ -34,7 +34,7 @@ public class ContestDriver {
             Boolean answer = flipACoin();
             Contestant currentContestant = contestants.get(currentContestantNumber);
 
-            if (answer == true) {
+            if (answer) {
                 // If contestant is not already in the front then move
                 if (currentContestantNumber != 0) {
                     contestants.remove(currentContestant);
@@ -60,7 +60,6 @@ public class ContestDriver {
 
     public static Boolean flipACoin() {
         Random rand = new Random();
-        Boolean answer = rand.nextBoolean();
-        return answer;
+        return rand.nextBoolean();
     }
 }
