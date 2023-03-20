@@ -19,6 +19,7 @@ public class ContestDriver {
 
         long endTime = System.currentTimeMillis();
         long elapsedTime = endTime - startTime;
+
         System.out.println("#############################################");
         System.out.println("Elapsed time: " + elapsedTime + " ms");
         System.out.println("# of Contestants: " + numberOfContestants);
