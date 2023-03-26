@@ -9,7 +9,7 @@ public class ContestDriver {
         LinkedList<Contestant> contestants = new LinkedList<Contestant>();
 
 
-        int numberOfContestants = 5;
+        int numberOfContestants = 10;
         for (int i = 0; i < numberOfContestants; i++) {
             Contestant newContestant = new Contestant("Contestant#" + i , i);
             contestants.add(newContestant);
