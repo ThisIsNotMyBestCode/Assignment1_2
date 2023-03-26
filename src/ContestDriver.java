@@ -1,16 +1,19 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class ContestDriver {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        ArrayList<Contestant> contestants = new ArrayList<>();
+        // List contestants
+        LinkedList<Contestant> contestants = new LinkedList<Contestant>();
 
-        int numberOfContestants = 3;
+
+        int numberOfContestants = 5;
         for (int i = 0; i < numberOfContestants; i++) {
             Contestant newContestant = new Contestant("Contestant#" + i , i);
             contestants.add(newContestant);
+
         }
 
         playAGame(contestants);
@@ -30,16 +33,27 @@ public class ContestDriver {
         System.out.println("Printing each contestant record: \n");
         for (var contestant : contestants) {
             System.out.println(contestant.getRecord());
+            System.out.println(contestant.getAveragePosition());
         }
     }
 
-    public static void playAGame(ArrayList<Contestant> contestants) {
+    public static void playAGame(LinkedList<Contestant> contestants) {
         System.out.println("Game started!");
         int currentContestantNumber = 0;
+
 
         for (int i = 0; i < contestants.size(); i++) {
             Boolean answer = flipACoin();
             Contestant currentContestant = contestants.get(currentContestantNumber);
+
+            // Record initial positions
+            if (i == 0) {
+                System.out.println("Initial positions:");
+                udpateContestantPositions(contestants);
+            }
+
+            System.out.println("Current person: "+ currentContestant.getName() + ", Answer: " + answer);
+
 
             if (answer) {
                 // If contestant is not already in the front then move
@@ -62,11 +76,23 @@ public class ContestDriver {
                     currentContestant.addRecord("Wrong Answer but " + currentContestant.getName() + " already last!");
                 }
             }
+
+            // Record updated positions
+            udpateContestantPositions(contestants);
         }
     }
 
     public static Boolean flipACoin() {
         Random rand = new Random();
         return rand.nextBoolean();
+    }
+
+    public static void udpateContestantPositions(LinkedList<Contestant> contestants) {
+        for (int i = 0; i < contestants.size(); i++) {
+            Contestant cur = contestants.get(i);
+            System.out.println(cur.getName());
+            cur.recordCurrentPosition(i);
+        }
+
     }
 }
